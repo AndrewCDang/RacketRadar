@@ -107,7 +107,7 @@ const CardProfiles = ({el, toggleOpacity, dispatchDelete, toggleAnimation, trans
         
         const updateFav = async () => {
             try{
-                const response = await fetch(`/favouriteRacket/${racketId}`, {
+                const response = await fetch(`api/favouriteRacket/${racketId}`, {
                     method: 'PATCH',
                     headers: {
                         'Content-Type': 'application/json'

@@ -40,7 +40,7 @@ function App() {
 
     const updateFavAdd = async () =>{
       try{
-        const response = await fetch(`/user/${userId}`,{
+        const response = await fetch(`api/user/${userId}`,{
           method:'PATCH',
           headers: {
             'Content-Type': 'application/json'
@@ -59,7 +59,7 @@ function App() {
 
     const updateUserStats = async () =>{
       try{
-        const response = await fetch(`/user/${userId}`,{
+        const response = await fetch(`api/user/${userId}`,{
           method:'PATCH',
           headers: {
             'Content-Type': 'application/json'
@@ -78,7 +78,7 @@ function App() {
 
     const updateWishRackets = async () =>{
       try{
-        const response = await fetch(`/user/${userId}`,{
+        const response = await fetch(`api/user/${userId}`,{
           method:'PATCH',
           headers: {
             'Content-Type':'application/json'

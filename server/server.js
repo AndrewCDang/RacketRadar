@@ -68,7 +68,7 @@ app.post("/rackets", limiter, (req,res) => {
 })
 
 // Create favourite counter, then sort by favourites
-app.post("/api/favRackets", limiter, (req,res) => {
+app.post("/favRackets", limiter, (req,res) => {
     const page = req.query.p || 0
     const racketsPerPage = 3
 
@@ -86,7 +86,7 @@ app.post("/api/favRackets", limiter, (req,res) => {
     })
 })
 
-app.get("/api/oneRacket/:id", (req, res) => {
+app.get("/oneRacket/:id", (req, res) => {
     Product.findOne({ _id: req.params.id })
   .then((product) => {
     if (product) {

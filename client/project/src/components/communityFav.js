@@ -19,7 +19,7 @@ const CommunityFav = () => {
 
     const communityFavourites = async () => {
           try {
-            const response = await fetch('/communityFavourites', {
+            const response = await fetch('api/communityFavourites', {
               method: 'GET',
               headers: {
                 'content-type': 'application/json',
