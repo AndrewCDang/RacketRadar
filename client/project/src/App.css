@@ -95,7 +95,7 @@ button {
   padding: 24px 32px 32px 32px;
   padding-bottom: 0;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 
@@ -103,6 +103,7 @@ button {
   width: fit-content;
   display: flex;
   gap: 24px;
+  margin-top: 16px;
   
 }
 
@@ -124,6 +125,7 @@ button {
     flex-direction: column;
     border-bottom: 1px solid var(--main-col-darkGrey);
     padding-bottom: 24px;
+    align-items: center;
   }
   .nav-link-container{
     margin: 16px 0px 0px 0px;
@@ -132,6 +134,7 @@ button {
     font-size: var(--main-text-subtitle);
     font-weight: 500;
   }
+  
 
 }
 @media (hover: hover) {
