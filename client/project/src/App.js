@@ -17,7 +17,7 @@ function App() {
 
   const updateLocalStorage = async (userId) =>{
     try{
-      const response = await fetch(`/user/${userId}`,{
+      const response = await fetch(`api/user/${userId}`,{
         method:'GET',
         headers:{
           'Content-Type': 'application/json'

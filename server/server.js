@@ -54,7 +54,7 @@ app.get("/", (req,res) => {
     res.send("Hello from server!")
 });
 
-app.post("/api/rackets", limiter, (req,res) => {
+app.post("/rackets", limiter, (req,res) => {
     Product
     .find()
     .collation({locale: "en" })
@@ -276,7 +276,7 @@ app.patch('/favouriteRacket/:id', rateLimitMiddleWare, async (req, res) => {
 
 
 // Getting user
-app.get('/user/:id', async (req,res)=>{
+app.get('api/user/:id', async (req,res)=>{
 
     const userId = req.params.id
     if(mongoose.Types.ObjectId.isValid(userId)){
