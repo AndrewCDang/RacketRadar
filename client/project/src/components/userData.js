@@ -10,7 +10,7 @@ const UserData = () => {
 
     useEffect(()=>{
         const createUser = async () => {
-          const createUser = await fetch('/user',{
+          const createUser = await fetch('/api/user',{
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
