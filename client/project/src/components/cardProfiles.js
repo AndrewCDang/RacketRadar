@@ -3,16 +3,7 @@ import errorImage from '../images/error-racket.png'
 
 
 
-const CardProfiles = ({el, toggleOpacity, dispatchDelete, toggleAnimation, translateState, opacityState, index, invsRef, contentRef, imgRefs, cardToggle, tag1, tag2, tag3, flexChart, balanceChart, difficultyChart, linearRefs, setCardToggle, cardStyle, setcardStyle, textRefs, state, dispatch, cardTextHeight, setCardTextHeight}) =>{
-
-    // Images
-    const imageUrl = useMemo(()=>{
-        const imageUrl = `${process.env.PUBLIC_URL}/images/${el.name.replace(/\s+/g, '')}.png`;
-        return imageUrl;
-    },[])
-    
-
-    
+const CardProfiles = ({el, toggleOpacity, dispatchDelete, toggleAnimation, translateState, opacityState, index, invsRef, contentRef, imgRefs, cardToggle, tag1, tag2, tag3, flexChart, balanceChart, difficultyChart, linearRefs, setCardToggle, cardStyle, setcardStyle, textRefs, state, dispatch, cardTextHeight, setCardTextHeight, imgUrl}) =>{   
 
     // const [state, dispatch] = useContext(RacketContext)
     const [racketObject, setRacketObject] = useState()
@@ -176,7 +167,7 @@ const CardProfiles = ({el, toggleOpacity, dispatchDelete, toggleAnimation, trans
     return(
         <article style={{transition: toggleAnimation ? 'all 0.5s ease' : toggleOpacity, order: 100 - index, opacity: opacityState[index] ? 1 : 0, transform: toggleAnimation ? translateState[index] : 'translate(0px,0px)'}} ref={el => invsRef.current[index+1]=el} className="card-box" key={index}>
             <div ref={el=>contentRef.current[index]=el} onClick={(e)=>{const newArray = [...cardToggle]; newArray[index]=!newArray[index]; setCardToggle(newArray); const newStyleArray = [...cardStyle]; newStyleArray[index]= imgRefs.current[index].offsetHeight - contentRef.current[index].offsetHeight; setcardStyle(newStyleArray);}} className="img-container">
-                <img ref={el=>imgRefs.current[index]=el}  src={imageUrl} alt={`${el.name} Image`} onError={(e) => e.target.src = errorImage} className="card-thumbnail"></img>
+                <img ref={el=>imgRefs.current[index]=el}  src={imgUrl} alt={`${el.name} Image`} onError={(e) => e.target.src = errorImage} className="card-thumbnail"></img>
             </div>
             <content style={{transform: cardToggle[index] ? `translateY(${cardStyle[index]}px)` : `translateY(0px)`, transition: 'transform 0.3s ease'}} className="card-row-2">
                 <div className="card-tag-container">

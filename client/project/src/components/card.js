@@ -165,6 +165,9 @@ function Card(){
     // 3.Card Component Template 
     const setCards = () => {
             const selectArray = selRacketArray.map((el,index)=>{
+
+            const imgUrl = `${process.env.PUBLIC_URL}/images/${el.name.replace(/\s+/g, '')}.png`
+
             let tag1;
             if(el.balance >= 40 && el.balance <= 60){
                 tag1 ='Balanced'
@@ -198,7 +201,7 @@ function Card(){
             const balanceChart = {"strokeDashoffset": `-${100-el.balance}`}
             const difficultyChart = {"strokeDashoffset": `-${100-el.difficulty}`}
             return(
-               < CardProfiles key={index} el={el} toggleOpacity={toggleOpacity} dispatchDelete={dispatchDelete} opacityState={opacityState} toggleAnimation={toggleAnimation} translateState={translateState} index={index} invsRef={invsRef} contentRef={contentRef} imgRefs={imgRefs} cardToggle={cardToggle} tag1={tag1} tag2={tag2} tag3={tag3} flexChart={flexChart} balanceChart={balanceChart} difficultyChart={difficultyChart} linearRefs={linearRefs} setCardToggle={setCardToggle} cardStyle={cardStyle} setcardStyle={setcardStyle} textRefs={textRefs} dispatch={dispatch} state={state} cardTextHeight={cardTextHeight} setCardTextHeight={setCardTextHeight}  />
+               < CardProfiles key={index} el={el} toggleOpacity={toggleOpacity} dispatchDelete={dispatchDelete} opacityState={opacityState} toggleAnimation={toggleAnimation} translateState={translateState} index={index} invsRef={invsRef} contentRef={contentRef} imgRefs={imgRefs} cardToggle={cardToggle} tag1={tag1} tag2={tag2} tag3={tag3} flexChart={flexChart} balanceChart={balanceChart} difficultyChart={difficultyChart} linearRefs={linearRefs} setCardToggle={setCardToggle} cardStyle={cardStyle} setcardStyle={setcardStyle} textRefs={textRefs} dispatch={dispatch} state={state} cardTextHeight={cardTextHeight} setCardTextHeight={setCardTextHeight} imgUrl={imgUrl}  />
             )
         })
 
