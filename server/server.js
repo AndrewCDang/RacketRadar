@@ -276,7 +276,7 @@ app.patch('/favouriteRacket/:id', rateLimitMiddleWare, async (req, res) => {
 
 
 // Getting user
-app.get('api/user/:id', async (req,res)=>{
+app.get('/user/:id', async (req,res)=>{
 
     const userId = req.params.id
     if(mongoose.Types.ObjectId.isValid(userId)){
