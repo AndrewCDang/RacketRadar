@@ -6,6 +6,8 @@ const UserProduct = require('./models/userProduct')
 const fs = require('fs')
 const { ifError } = require('assert')
 const { ObjectId } = require('mongodb')
+const cron = require('node-cron');
+const axios = require('axios');
 const app = express()
 const PORT = process.env.PORT || 8080
 require("dotenv").config()
@@ -18,8 +20,6 @@ const limiter = rateLimit({
 
 // Extracts/parses any Json data so we can use it into handlers
 app.use(express.json());
-
-// Limits Api call rate
 app.use(limiter)
 
 // move to environment variable file
@@ -33,8 +33,8 @@ async function connect(){
         console.error(error)
     }
 }
-
 connect()
+
 function getItem() {
     try {
       const content = fs.readFileSync('racketList.json');
@@ -243,38 +243,6 @@ app.patch('/favouriteRacket/:id', rateLimitMiddleWare, async (req, res) => {
     }
 })
 
-// app.patch('/wishRacket/:id', rateLimitMiddleWare, async (req, res) => {
-//     const racketId = req.params.id;
-//     const userId = req.body.userId;
-
-//     if (mongoose.Types.ObjectId.isValid(userId)) {
-//         try {
-//             const product = await UserProduct.findById(userId);
-
-//             if (!product) {
-//                 res.status(404).json({ error: "User not found" });
-//                 return;
-//             }
-
-//             if (product.wishList.includes(racketId)) {
-//                 // If userId is already a favourite, remove it
-//                 const result = await Product.updateOne({ _id: userId }, { $pull: { favourites: racketId } });
-//                 res.status(200).json({message:`Item Removed: ${result}`, type:'removed'});
-//             } else {
-//                 // If userId is not a favourite, add it
-//                 const result = await Product.updateOne({ _id: userId }, { $push: { favourites: racketId } });
-//                 res.status(200).json({message:`Item Added: ${result}`, type:'added'});
-//             }
-//         } catch (err) {
-//             console.log(err);
-//             res.status(500).json({ message: err.message });
-//         }
-//     } else {
-//         res.status(400).json({ error: "Invalid ObjectId format" });
-//     }
-// })
-
-
 // Getting user
 app.get('/user/:id', async (req,res)=>{
 
@@ -348,32 +316,20 @@ app.post('/import', async(req,res)=>{
 })
 
 
-// test
-// test
+// Self Ping
 
-
-    // useEffect(()=>{
-    //     const fetchData = async () => {
-    //         try {
-    //           const response = await fetch('/import', {
-    //             method: 'POST',
-    //             headers: {
-    //               'Content-Type': 'application/json'
-    //             }
-    //           });
-    //           const data = await response.json();
-    //           console.log('Response:', data);
-        
-    //           if (response.ok) {
-    //             console.log('Success');
-    //           } else {
-    //             console.error('Fail');
-    //           }
-    //         } catch (error) {
-    //           console.error('Error:', error);
-    //         }
-    //       };
-        
-    //       fetchData();
-    // },[])
+const selfPing = () => {
+    axios.get(`https://racket-radar.netlify.app/`)
+      .then(response => {
+        console.log('Self-ping successful:', response.data);
+      })
+      .catch(error => {
+        console.error('Self-ping failed:', error);
+      });
+  };
   
+  // Schedule the self-ping every 10 minutes using node-cron
+  cron.schedule('*/10 * * * *', selfPing, {
+    scheduled: true,
+    timezone: "GMT"
+  });
