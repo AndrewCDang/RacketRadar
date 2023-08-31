@@ -83,7 +83,7 @@ const StickySearch = ({searchBarRef, NONE, searchRef, handleSearch, racketsRef, 
                 return(
                     <div key={index} style={ searchSelected[index] ? {order: -state.racketList.length + index} : null} onClick={()=> searchSelected[index] ? deleteRacket(el._id) : dispatch({type:'selectRacket', payload:{condition:false, objects: el._id}})}>
                         <span key={index}  className={ searchSelected[index] ? 'racket-item' : null}>
-                            <strong>{el.name.toUpperCase()}</strong>   &nbsp;&nbsp;&nbsp;{el.label}
+                            <strong>{el.brand.toUpperCase()}&nbsp;{el.name.toUpperCase()}</strong>   &nbsp;&nbsp;&nbsp;{el.label}
                         </span>
                     </div>
                 )
