@@ -368,7 +368,7 @@ function Landing(){
         <main className='graph-main-container'>
             {
                 racketObjects ? 
-                    <article style={{backgroundColor:'grey'}} className='graph'>
+                    <article className='graph'>
                         <section className='graph-dots-container'>
                             <>{racketObjects}</>
                             {userDot}
