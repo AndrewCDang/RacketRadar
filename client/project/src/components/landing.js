@@ -1,5 +1,6 @@
 
 import React, { useContext, useEffect, useState, useRef, useCallback, useMemo } from 'react'
+import './loadingSpin.css'
 import { RacketContext } from '../App'
 
 
@@ -365,26 +366,44 @@ function Landing(){
 
     return(
         <main className='graph-main-container'>
-            <article className='graph'>
-                <section className='graph-dots-container'>
-                    <>{racketObjects}</>
-                    {userDot}
-                </section>
-                <section className='graph-container'>
-                    <div className='stiff'>High Stiffness</div>
-                    <div className='flex'>High Flex</div>
-                    <div className='heavy'>H<span>ead</span>-Heavy</div>
-                    <div className='light'>H<span>ead</span>-Light</div>
+            {
+                racketObjects ? 
+                    <article style={{backgroundColor:'grey'}} className='graph'>
+                        <section className='graph-dots-container'>
+                            <>{racketObjects}</>
+                            {userDot}
+                        </section>
+                        <section className='graph-container'>
+                            <div className='stiff'>High Stiffness</div>
+                            <div className='flex'>High Flex</div>
+                            <div className='heavy'>H<span>ead</span>-Heavy</div>
+                            <div className='light'>H<span>ead</span>-Light</div>
 
-                    <div className='circle-1'></div>
-                    <div className='circle-2 ani-rotate'></div>
-                    <div className='circle-3 ani-rotate'></div>
-                    <div className='vertical-line'></div>
-                    <div className='vertical-line line-blur'></div>
-                    <div className='horizontal-line'></div>
-                    <div className='horizontal-line line-blur'></div>
-                </section>
-            </article>
+                            <div className='circle-1'></div>
+                            <div className='circle-2 ani-rotate'></div>
+                            <div className='circle-3 ani-rotate'></div>
+                            <div className='vertical-line'></div>
+                            <div className='vertical-line line-blur'></div>
+                            <div className='horizontal-line'></div>
+                            <div className='horizontal-line line-blur'></div>
+                        </section>
+                    </article>
+                    :
+                    <div className='graph' id="wrapper">
+                        <div id="wrapper">
+                            <div className="profile-main-loader w-4">
+                            <div className="loader">
+                                <svg className="circular-loader" viewBox="0 0 108 108" xmlns="http://www.w3.org/2000/svg">
+                                    <circle className="loader-path" cx="54" cy="54" r="50" fill="none" stroke="white" strokeWidth={8} />
+                                </svg>
+                            </div>
+                            </div>     
+                        </div>  
+                        <div className='loading-text'>
+                            <h3>Fetching Database...</h3>
+                        </div> 
+                    </div>
+            }
         </main>
     )
 }

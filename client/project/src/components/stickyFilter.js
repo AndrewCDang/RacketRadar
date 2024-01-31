@@ -9,7 +9,7 @@ const StickyFilter = ({filterRef, NONE, inputMin, inputMax, rangeFill, rangeMin,
     const [selectedRadio, setSelectedRadio] = useState('yonex victor');
 
     const handleRadioChange = (e) => {
-      setSelectedRadio(e.target.value);
+        setSelectedRadio(e.target.value);
     };
 
     useEffect(()=>{
@@ -17,7 +17,6 @@ const StickyFilter = ({filterRef, NONE, inputMin, inputMax, rangeFill, rangeMin,
             updateFilterValues()
         }
     },[selectedRadio])
-  
 
     const updateFilterValues = useCallback( ()=> {
         const minInput = Object.values(inputMin.current)
@@ -25,35 +24,35 @@ const StickyFilter = ({filterRef, NONE, inputMin, inputMax, rangeFill, rangeMin,
         let filterArray = {}
         for (let i = 0; i < maxInput.length; i++) {
             switch (i) {
-              case 0:
+            case 0:
                 filterArray.cost = {
                   min: minInput[i].value * 1,
                   max: maxInput[i].value *1
                 };
                 break;
-              case 1:
+            case 1:
                 filterArray.stiff = {
                   min: minInput[i].value * 1,
                   max: maxInput[i].value * 1
                 };
                 break;
-              case 2:
-                filterArray.balance = {
-                  min: minInput[i].value * 1,
-                  max: maxInput[i].value * 1
-                };
-                break;
-              case 3:
+                case 2:
+                    filterArray.balance = {
+                    min: minInput[i].value * 1,
+                    max: maxInput[i].value * 1
+                    };
+                    break;
+                case 3:
                 filterArray.difficulty = {
                   min: minInput[i].value * 1,
                   max: maxInput[i].value * 1
                 };
                 break;
         
-              default:
+                default:
                 break;
             }
-          }
+        }
         filterArray.bestSelling = bestSellingCheck.current.checked
         filterArray.currentlySelected = currentlySelected.current.checked
         filterArray.brandSelected = selectedRadio

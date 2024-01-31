@@ -229,7 +229,7 @@ button {
 
 .graph{
   width: 30vw;
-  height: 30vw;
+  aspect-ratio: 1/1;
   max-width: 608px;
   max-height: 608px;
   min-width: 304px;
@@ -1275,7 +1275,7 @@ button {
 /* Sticky Btns */
 .sticky-container{
   position: absolute;
-  z-index: 10;
+  z-index: 100;
 }
 
 .sticky{
@@ -1821,11 +1821,10 @@ span a {
   height: fit-content;
   display: flex;
   flex-direction: column;
-  width: 60vw;
+  width: 80vw;
   margin: 0 auto;
   background-color: var(--main-col-darkGrey-op-1);
   border-radius: 16px;
-  min-width:65vw;
   overflow:hidden;
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
 
@@ -1859,8 +1858,26 @@ span a {
   .style-row{
     flex-direction: column;
   }
-  .style-container{
+  .style-grid{
+    height: fit-content!important;
+  }
+  .style-grid-2 {
+    height: fit-content !important;
+  }
+  .user-style-card{
+    display: flex!important;
     flex-direction: column;
+    justify-content: center;
+    align-items: center !important;
+    
+  }
+  .user-style-card>svg{
+    justify-self: center!important;
+    align-self: center!important;
+  }
+  .user-style{
+    text-align: center;
+    align-self: center!important;
   }
 }
 

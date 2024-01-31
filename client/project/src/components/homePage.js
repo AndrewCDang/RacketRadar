@@ -1,4 +1,5 @@
 
+import React from 'react';
 import Landing from './landing'
 import Card from './card'
 import Sticky from './stickyBtn';
