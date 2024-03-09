@@ -431,15 +431,7 @@ const CardProfiles = ({
             <aside className="card-circle-container">
                 <div
                     className="card-circle c-1"
-                    onClick={(e) => {
-                        {
-                            dispatchDelete(index);
-                        }
-                        dispatch({
-                            type: "deleteId",
-                            payload: { deleteId: el._id, deletedFrom: "card" },
-                        });
-                    }}
+                    onClick={(e) => dispatchDelete(index)}
                     title="Close"
                 >
                     <div className="card-outline">
